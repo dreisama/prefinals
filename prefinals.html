@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odd Even</title>
+  <style>
+    body {
+      background-color: aquamarine;
+      color: white;
+      text-align: center;
+      font-size: 50px;
+    }
+    
+    button, input {
+      font-size: 50px;
+    }
+
+    p {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>PREFINALS: PRIME AND ODD OR EVEN</h2>
+
+  <label for="num">Input a number: </label><br>
+  <input type="text" id="num" /><br><br>
+  <button onclick="inputNum()">Submit</button>
+  
+
+  <p id="result"></p>
+
+  <script>
+    function inputNum() {
+      var inputNum = parseInt(document.getElementById("num").value);
+      var Oddnum = inputNum % 2 !== 0;
+      var Evennum = !Oddnum;
+
+      var oddNumbers = [];
+      var evenNumbers = [];
+
+      for (var i = 1; i <= inputNum; i++) {
+        if (i % 2 !== 0) {
+          oddNumbers.push(i);
+        } else {
+          evenNumbers.push(i);
+        }
+      }
+
+      var result = `Prime Number : ${inputNum}<br>
+                           Odd no : ${oddNumbers.length > 0 ? oddNumbers.join(', ') : 'No odd numbers'}<br>
+                           Even no : ${evenNumbers.length > 0 ? evenNumbers.join(', ') : 'No even numbers'}`;
+
+      document.getElementById("result").innerHTML = result;
+    }
+
+    function checkPrime() {
+      var inputNum = parseInt(document.getElementById("num").value);
+      var isPrime = isPrime(inputNum);
+
+      var result = `Number: ${inputNum}<br>
+                           Is Prime: ${isPrime ? inputNum : 'Not a prime number'}`;
+
+      document.getElementById("result").innerHTML = result;
+    }
+
+    function isPrime(num) {
+      if (num <= 1) return false;
+      for (var i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>
